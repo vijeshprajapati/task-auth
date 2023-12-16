@@ -9,7 +9,7 @@ async function main() {
   //     prisma.users.deleteMany()
   //   ]);
     
-    const passString = await bcrypt.hash('admin', 10);
+    const passString = await bcrypt.hash(process.env.ADMIN_PASS, 10);
 
     await prisma.users.create({
       data: {
