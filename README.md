@@ -13,7 +13,7 @@ A simple backend REST API for a blog built using NestJS, Prisma, PostgreSQL and 
 
 5. Access the Swagger documentation at http://localhost:3000/api
 
-### Database schema
+## Database schema
 The database schema is as follows
 ```
 {
@@ -37,5 +37,5 @@ The database schema is as follows
 - Created a custom decorator @Roles(), so that RBAC can be implemented easily
 - A default Admin has been created in the database. Only Role admin can access the /users endpoint
 
-5. /users/comments: This is the comments route
+5. /users/comments: This is the comments route. This route is not role protected.
 
