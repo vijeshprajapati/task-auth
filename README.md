@@ -26,7 +26,14 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Requirements
+Node Installed
+pgadmin for postgres
+
 ## Installation
+# To produce this app in local enviroment
+
+First clone this repo in your local machine
 
 ```bash
 $ npm install
@@ -34,29 +41,16 @@ $ npm install
 
 ## Running the app
 
+Ensure port 3000 and 5432 are not busy
+
 ```bash
 # development
 $ npm run start
 
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Support
 

@@ -5,9 +5,12 @@ import { JwtAuthGuard } from "src/auth/auth.guard";
 import { Roles } from "./roles/roles.decorator";
 import { Role } from "./roles/role.enum";
 import { RoleGuard } from "./roles/role.guard";
+import { ApiSecurity, ApiTags } from "@nestjs/swagger";
 
 
 @Controller('users')
+@ApiTags('getUsers')
+@ApiSecurity('JWT-auth')
 export class UsersController {
     constructor(private readonly userService : UsersService){}
 

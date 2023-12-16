@@ -4,8 +4,10 @@ import { Request, Response } from 'express';
 import { LoginDto } from "./dto/login-user.dto";
 import { RegisterUsersDto } from "./dto/register-user.dto";
 import { RefreshJwtAuthGuard } from "./refresh-jwt-auth.guard";
+import { ApiTags } from "@nestjs/swagger";
 
 @Controller('/auth')
+@ApiTags('UserAuth')
 export class AuthController{
 
     constructor(private readonly authService: AuthService){}
