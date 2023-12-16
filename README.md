@@ -33,7 +33,8 @@ The database schema is as follows
 
 3. /auth/refresh: Refresh the auth Token
 
-##### Role Protected
+**Role Protected**
+
 4. /users: To get information of all the users in the database. This endpoint is protected by Role Based Authorization.
 - Created a custom decorator @Roles(), so that RBAC can be implemented easily
 - A default Admin has been created in the database. Only Role admin can access the /users endpoint
