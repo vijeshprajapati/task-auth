@@ -3,15 +3,16 @@
 A simple backend REST API for a blog built using NestJS, Prisma, PostgreSQL and Swagger. 
 
 ## Installation
-
-1. Install dependencies: `npm install`
-2. Make sure you have a local instance of PostgreSQL running. 
-3. Apply database migrations: `npx prisma migrate dev` 
-4. Start the project:  `npm run start:dev`
+1. Clone the repo on your local machine
+2. cd into task-auth/
+3. Install dependencies: `npm install`
+4. Make sure you have a local instance of PostgreSQL running. 
+5. Apply database migrations: `npx prisma migrate dev` 
+6. Start the project:  `npm run start:dev`
 
 #### Swagger Documentation
 
-5. Access the Swagger documentation at http://localhost:3000/api
+7. Access the Swagger documentation at http://localhost:3000/api
 
 ## Database schema
 The database schema is as follows
