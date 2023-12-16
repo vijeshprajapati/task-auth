@@ -2,7 +2,9 @@ import { Controller, Get, Req, Res, UseGuards } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import {Request,Response} from 'express'
 import { JwtAuthGuard } from "src/auth/auth.guard";
-import { RoleGuard } from "./role.guard";
+import { Roles } from "./roles/roles.decorator";
+import { Role } from "./roles/role.enum";
+import { RoleGuard } from "./roles/role.guard";
 
 
 @Controller('users')
@@ -10,7 +12,8 @@ export class UsersController {
     constructor(private readonly userService : UsersService){}
 
     @Get()
-    @UseGuards(JwtAuthGuard, new RoleGuard('ADMIN'))
+    @UseGuards(JwtAuthGuard, RoleGuard)
+    @Roles(Role.Admin)
     async getAllUsers(@Req() request: Request, @Res() response: Response):Promise<any>{
           try{
                const result = await this.userService.getAllUser();
