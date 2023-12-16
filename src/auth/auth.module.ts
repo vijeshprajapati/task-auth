@@ -7,10 +7,11 @@ import { UsersService } from "src/users/users.service";
 import { UsersModule } from "src/users/users.module";
 import { PassportModule } from "@nestjs/passport";
 import { JwtModule } from "@nestjs/jwt";
+import { RefreshJwtStrategy } from "./refreshToken.strategy";
 
 @Module({
     controllers : [AuthController],
-    providers: [AuthService, PrismaService, JwtStrategy, UsersService],
+    providers: [AuthService, PrismaService, JwtStrategy, RefreshJwtStrategy, UsersService],
     imports: [
         UsersModule,
         PassportModule,

@@ -33,7 +33,8 @@ export class AuthService{
         }
 
         return{
-            token: this.jwtService.sign({username})
+            accesstoken: this.jwtService.sign({username}),
+            refreshtoken: this.jwtService.sign({username}, {expiresIn: '1d'})
         }
     }
 
@@ -49,5 +50,27 @@ export class AuthService{
         return {
             token: this.jwtService.sign({username: user.username}),
         };
+    }
+
+    async refreshToken(loginDto: LoginDto) : Promise<any>{
+        const {username, password} = loginDto;
+
+        const users = await this.prismaService.users.findUnique({
+            where: {username}
+        })
+
+        if(!users){
+            throw new NotFoundException('User Not Found');
+        }
+
+        const validatePassword = await bcrypt.compare(password, users.password);
+
+        if(!validatePassword){
+            throw new NotFoundException('Invalid Password');
+        }
+
+        return{
+            accesstoken: this.jwtService.sign({username})
+        }
     }
 }

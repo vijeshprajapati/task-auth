@@ -29,4 +29,10 @@ export class UsersController {
                })
           }
     }
+
+    @Get('/comments')
+    @UseGuards(JwtAuthGuard)
+    async getComments(): Promise<string>{
+          return ("You are at /users/comments route");
+}
 }

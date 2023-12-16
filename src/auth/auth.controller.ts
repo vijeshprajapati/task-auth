@@ -1,8 +1,9 @@
-import { Body, Controller, Post, Req, Res } from "@nestjs/common";
+import { Body, Controller, Post, Req, Res, UseGuards } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { Request, Response } from 'express';
 import { LoginDto } from "./dto/login-user.dto";
 import { RegisterUsersDto } from "./dto/register-user.dto";
+import { RefreshJwtAuthGuard } from "./refresh-jwt-auth.guard";
 
 @Controller('/auth')
 export class AuthController{
@@ -35,6 +36,25 @@ export class AuthController{
                 status: 'Ok!',
                 message: 'User Successfully Registered',
                 result: result,
+            })
+        }
+        catch(err){
+            return response.status(500).json({
+                status: 'Ok!',
+                message: 'Internal Server Error',
+            })
+        }
+    }
+
+    @UseGuards(RefreshJwtAuthGuard)
+    @Post('/refresh')
+    async refreshToken(@Req() request: Request, @Res() response: Response, @Body() loginDto: LoginDto) : Promise<any>{
+        try{
+            const result = await this.authService.refreshToken(loginDto);
+            return response.status(200).json({
+                status: 'Ok!',
+                message: 'Successfully Logged in',
+                result: result
             })
         }
         catch(err){
