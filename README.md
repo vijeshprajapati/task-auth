@@ -1,6 +1,6 @@
 ## Nestjs Auth 
 
-A simple backend REST API for a blog built using NestJS, Prisma, PostgreSQL and Swagger. 
+A simple backend API for authentication and authorization built using NestJS, Prisma, PostgreSQL and Swagger. 
 
 ## Installation
 1. Clone the repo on your local machine
