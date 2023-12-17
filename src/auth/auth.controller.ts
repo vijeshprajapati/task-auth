@@ -5,6 +5,7 @@ import { LoginDto } from "./dto/login-user.dto";
 import { RegisterUsersDto } from "./dto/register-user.dto";
 import { RefreshJwtAuthGuard } from "./refresh-jwt-auth.guard";
 import { ApiTags } from "@nestjs/swagger";
+import { RefreshDto } from "./dto/refresh-user.dto";
 
 @Controller('/auth')
 @ApiTags('UserAuth')
@@ -50,9 +51,9 @@ export class AuthController{
 
     @UseGuards(RefreshJwtAuthGuard)
     @Post('/refresh')
-    async refreshToken(@Req() request: Request, @Res() response: Response, @Body() loginDto: LoginDto) : Promise<any>{
+    async refreshToken(@Req() request: Request, @Res() response: Response, @Body() refreshDto: RefreshDto) : Promise<any>{
         try{
-            const result = await this.authService.refreshToken(loginDto);
+            const result = await this.authService.refreshToken(refreshDto);
             return response.status(200).json({
                 status: 'Ok!',
                 message: 'Successfully Logged in',

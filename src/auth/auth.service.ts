@@ -6,6 +6,7 @@ import { LoginDto } from "./dto/login-user.dto";
 import * as bcrypt from 'bcrypt';
 import { RegisterUsersDto } from "./dto/register-user.dto";
 import { Users } from "src/users/users.model";
+import { RefreshDto } from "./dto/refresh-user.dto";
 
 @Injectable()
 export class AuthService{
@@ -52,8 +53,8 @@ export class AuthService{
         };
     }
 
-    async refreshToken(loginDto: LoginDto) : Promise<any>{
-        const {username, password} = loginDto;
+    async refreshToken(refreshDto: RefreshDto) : Promise<any>{
+        const {username, password} = refreshDto;
 
         const users = await this.prismaService.users.findUnique({
             where: {username}
