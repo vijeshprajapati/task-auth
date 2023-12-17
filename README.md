@@ -1,6 +1,6 @@
 ## Nestjs Auth 
 
-A simple backend REST API for a blog built using NestJS, Prisma, PostgreSQL and Swagger. 
+A simple backend API for authentication and authorization built using NestJS, Prisma, PostgreSQL and Swagger. 
 
 ## Installation
 1. Clone the repo on your local machine
@@ -33,12 +33,12 @@ The database schema is as follows
 
 3. /auth/refresh: Refresh the auth Token
 
-##### Role Protected
+**Role Protected**
+
 4. /users: To get information of all the users in the database. This endpoint is protected by Role Based Authorization.
 - Created a custom decorator @Roles(), so that RBAC can be implemented easily
 - A default Admin has been created in the database. Only Role admin can access the /users endpoint
-- Default Admin credentials: username: admin
-                             password: admin
+- Default Admin credentials: `username: admin  password: admin`
 - You can change it in .env file
 
 5. /users/comments: This is the comments route. This route is not role protected.
